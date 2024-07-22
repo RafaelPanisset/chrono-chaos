@@ -17,13 +17,15 @@ instance Read TimePeriod where
 data Item = Item { itemName :: String, itemDescription :: String } deriving (Show, Eq)
 
 data Anomaly = Anomaly { 
-    anomalyDescription :: String, 
-    requiredItems :: [Item]
-} deriving (Show)
+    anomalyDescription :: String,
+    requiredItems :: [Item],
+    timePeriod :: TimePeriod
+} deriving (Show, Eq)
 
 data GameState = GameState {
     currentTime :: TimePeriod,
     inventory :: [Item],
     resolvedAnomalies :: [Anomaly],
+    activeAnomalies :: [Anomaly],
     timeJumps :: Int
 } deriving (Show)
